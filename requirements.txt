@@ -1,0 +1,2 @@
+# The only dependency. CPU is fine and is what every number in RESULTS.md used.
+torch>=2.0
