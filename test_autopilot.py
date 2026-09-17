@@ -232,7 +232,11 @@ def _():
     agent, _ = run("interacting", budget=4)
     text = agent.research_log()
     assert text.isascii(), "non-ascii in a log that has to print on Windows"
-    for expected in ("hypothesis", "change", "result", "verdict"):
+    # These are the labels LogEntry.render() actually prints. The test used to
+    # look for "hypothesis" and "change", which render() deliberately renamed
+    # to "because" and "tried" -- the reasoning is in its docstring -- and the
+    # assertion was never updated, so the suite sat red on a rename.
+    for expected in ("tried", "because", "result", "verdict", "now reads"):
         assert expected in text, expected
 
 
